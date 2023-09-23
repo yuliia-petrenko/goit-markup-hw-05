@@ -589,6 +589,7 @@ section {
 .modal-btn:focus {
   background-color: var(--color-hov-foc);
   border: none;
+  fill: var(--color-wite);
 }
 .modal-close {
   /* fill: var(--color-section); */
@@ -732,14 +733,13 @@ section {
   opacity: 1;
 }
 .modal-checkbox-label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   line-height: 1.17;
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.16;
   letter-spacing: 0.04em;
   color: var(--color-border-icon);
 }
