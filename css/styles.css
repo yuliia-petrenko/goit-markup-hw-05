@@ -538,6 +538,8 @@ section {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .is-open {
   opacity: 1;
@@ -545,7 +547,7 @@ section {
   pointer-events: auto;
 }
 .modal {
-  position: relative;
+  position: absolute;
   width: 408px;
   min-height: 584px;
   background-color: var(--color-bgn-modal);
@@ -555,9 +557,10 @@ section {
   padding-left: 24px;
   padding-right: 24px;
   padding-bottom: 24px;
-  top: 0;
-  left: 0;
-  transition: transform 250ms ease-in-out;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -568,10 +571,8 @@ section {
   display: flex;
   width: 24px;
   height: 24px;
-  top: 0;
-  right: 0;
-  margin-top: 24px;
-  margin-right: 32px;
+  top: 24px;
+  right: 24px;
   margin-bottom: 24px;
   background-color: #e7e9fc;
   border-radius: 50%;
@@ -579,19 +580,26 @@ section {
   border: 1px solid rgba(0, 0, 0, 0.1);
   align-items: center;
   justify-content: center;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-btn:hover,
 .modal-btn:focus {
   background-color: var(--color-hov-foc);
+  border: none;
 }
 .modal-close {
   /* fill: var(--color-section); */
   width: 8px;
   height: 8px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-close:hover,
+.modal-close:hover {
+  fill: var(--color-wite);
+}
 .modal-close:focus {
   fill: var(--color-wite);
 }
@@ -612,7 +620,9 @@ section {
 .modal-input-wrap {
   position: relative;
 }
-
+.modal-comment {
+  margin-bottom: 16px;
+}
 .modal-input {
   border: 1px solid rgba(46, 47, 66, 0.4);
   width: 100%;
@@ -620,9 +630,10 @@ section {
   border-radius: 4px;
   padding-left: 38px;
   outline: transparent;
+  background-color: transparent;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.modal-input:hover,
+
 .modal-input:focus {
   border-color: var(--color-logo-but);
 }
@@ -632,11 +643,11 @@ section {
   margin-bottom: 4px;
   line-height: 1.16;
   font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--color-border-icon);
 }
-.modal-wrap-icon {
-  position: relative;
-  /* fill: var(--color-text); */
-}
+
 .modal-input-svg {
   padding-left: 38px;
 }
@@ -646,6 +657,7 @@ section {
   top: 50%;
   transform: translateY(-50%);
   transition: fill 250ms;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-input:focus + .modal-input-icon {
   fill: var(--color-logo-but);
@@ -663,17 +675,18 @@ section {
   resize: none;
   border-radius: 4px;
   padding: 8px 16px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--color-modal);
   border: 1px solid var(--color-modal);
-  margin-bottom: 16px;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-textarea:focus {
   border-color: var(--color-logo-but);
 }
 .modal-textarea::placeholder {
-  font-size: 12px;
-  line-height: 1.16;
-  letter-spacing: 0.04em;
+  color: var(--color-modal);
 }
 
 .modal-checkbox {
@@ -686,14 +699,18 @@ section {
   display: none;
 }
 .modal-checkbox-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  fill: transparent;
   width: 16px;
   height: 16px;
   border: 1px solid var(--color-modal);
   border-radius: 2px;
   background-color: var(--color-bgn-modal);
-  transition: background-color 250 cubic-bezier(0.4, 0, 0.2, 1),
-    border 250 cubic-bezier(0.4, 0, 0.2, 1),
-    fill 250 cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-checkbox-icon {
@@ -702,7 +719,7 @@ section {
 .modal-checkbox-input:checked + .modal-checkbox-label .modal-checkbox-check {
   border: none;
   background-color: var(--color-hov-foc);
-  fill: var(--color-hov-foc);
+  fill: var(--color-section);
   padding: 4px 3px;
   display: flex;
   align-items: center;
@@ -719,7 +736,7 @@ section {
   align-items: center;
   justify-content: center;
   gap: 8px;
-
+  line-height: 1.17;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.16;
@@ -732,7 +749,7 @@ section {
   text-decoration: underline;
 }
 .modal-btsub {
-  font-family: 'Roboto';
+  font-family: 'Roboto' serif;
   display: block;
   margin: auto;
   color: var(--color-wite);
@@ -755,7 +772,8 @@ section {
 .modal-btsub:focus {
   background-color: var(--color-hov-foc);
 }
-.modal-div-foot {
+/* footer modal */
+.form-footer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -765,33 +783,27 @@ section {
   width: 264px;
   height: 40px;
   border: 1px solid var(--color-wite);
-  background-color: var(--color-text);
+  background-color: transparent;
   border-radius: 4px;
   font-family: Roboto;
   font-size: 12px;
   font-weight: 400;
-  line-height: 2;
+  line-height: 1.5;
   letter-spacing: 0.04em;
   padding-left: 16px;
   color: var(--color-wite);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+}
+.footer-input::placeholder {
+  color: var(--color-wite);
 }
 .modal-button {
-  background-color: var(--color-logo-but);
-  color: var(--color-wite);
-  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
-  color: var(--color-wite);
-  background-color: var(--color-logo-but);
-  cursor: pointer;
-  text-transform: capitalize;
   border-radius: 4px;
   min-width: 165px;
   height: 40px;
-  border: none;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .modal-button:hover {
   background-color: var(--color-hov-foc);
@@ -801,17 +813,13 @@ section {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.04em;
+  color: var(--color-wite);
   font-family: 'Roboto', sans-serif;
-}
-.footer-m-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--color-logo-but);
 }
 .modal-teleg {
-  top: 0;
   margin-left: 16px;
-  fill: var(--color-wite);
 }
