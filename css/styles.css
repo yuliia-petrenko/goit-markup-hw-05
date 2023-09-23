@@ -699,6 +699,17 @@ section {
 .modal-checkbox-input {
   display: none;
 }
+.modal-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1.17;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-border-icon);
+}
 .modal-checkbox-check {
   display: inline-flex;
   align-items: center;
@@ -731,17 +742,6 @@ section {
   .modal-checkbox-check
   .modal-checkbox-icon {
   opacity: 1;
-}
-.modal-checkbox-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  line-height: 1.17;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--color-border-icon);
 }
 
 .privacy-policy {
