@@ -691,7 +691,7 @@ section {
 }
 
 .modal-checkbox {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 24px;
