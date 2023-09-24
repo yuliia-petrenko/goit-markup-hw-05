@@ -700,10 +700,6 @@ section {
   display: none;
 }
 .modal-checkbox-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   line-height: 1.17;
   font-size: 12px;
   font-weight: 400;
@@ -714,6 +710,7 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  margin-right: 8px;
   fill: transparent;
   width: 16px;
   height: 16px;
@@ -733,9 +730,6 @@ section {
   background-color: var(--color-hov-foc);
   fill: var(--color-section);
   padding: 4px 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .modal-checkbox-input:checked
   + .modal-checkbox-label
